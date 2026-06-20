@@ -30,45 +30,25 @@ const Education = () => {
       location: 'Bristol, United Kingdom',
       delay: 100,
       points: [
-        'Artificial Intelligence and Vision',
-        'Unmanned Aerial Vehicles (UAV)',
-        'Machine Vision and Human-Robot Interaction',
-        'Robotics Fundamentals and Teleoperation'
+        'Artificial Intelligence and Robotics',
+        'Unmanned Aerial Vehicle (UAV) Systems',
+        'Human-Robot Interaction (HRI)',
+        'Robotics Systems and Assistive Robotics',
+        'Autonomous Drones and Navigation',
+        'Machine Vision and Perception'
       ]
     },
     {
-      degree: 'MSc Astrophysics',
-      school: 'University of Hertfordshire',
-      duration: '2022 – 2023',
-      location: 'Hatfield, United Kingdom',
+      degree: 'B.Tech Artificial Intelligence and Data Science',
+      school: 'Priyadarshani College of Engineering,',
+      duration: '2017 – 2021',
+      location: 'Nagpur',
       delay: 200,
       points: [
-        'Astrophysics and Space Science'
-      ]
-    },
-    {
-      degree: 'Leeds International Summer School',
-      school: 'University of Leeds',
-      duration: 'Jun 2019 – Jul 2019',
-      location: 'Leeds, United Kingdom',
-      delay: 300,
-      points: [
-        'Robotics and Autonomous Systems',
-        'Robotics and Data Mining',
-        'Grade: 78%'
-      ]
-    },
-    {
-      degree: 'B.E. Electronics and Communication Engineering',
-      school: 'PSG College of Technology',
-      duration: '2017 – 2021',
-      location: 'Coimbatore, India',
-      delay: 400,
-      points: [
-        'Embedded Systems and Microprocessors',
-        'Signal Processing and Communication',
-        'Robotics and Automation',
-        'Participated in FTC Rover Ruckus Challenge'
+        'Artificial Intelligence and Machine Learning',
+        'Data Science and Analytics',
+        'Programming and Algorithms',
+        'Robotics and Automation'
       ]
     }
   ];

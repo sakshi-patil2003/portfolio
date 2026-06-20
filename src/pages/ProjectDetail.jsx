@@ -2,256 +2,443 @@ import React, { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 
 const projectData = {
-  'fruit-detection': {
-    title: 'Apple Detection in Orchards',
-    meta: 'Machine Learning · Computer Vision · Agricultural Automation',
-    desc: 'This project was implemented using models like YOLO and FRCNN to address challenges in agricultural automation by enabling efficient and precise fruit detection.',
+  'multifunction-humanoid-robot': {
+    title: 'Multifunction Humanoid Robot',
+    meta: 'Robotics · SLAM · IoT · Voice Interaction · Health Monitoring',
+    desc: 'Designed and developed a height-adjustable multifunction humanoid robot capable of voice interaction, autonomous navigation, and real-time monitoring. The robot features a touchscreen interface, IoT-based control, SLAM-enabled autonomous movement, a custom in-house human-like hand, a 3D-printed robotic gripper, and integrated health and environmental sensors including heart rate, SpO₂, stress monitoring, and gas detection. The robot can extend up to 5.5 feet for surveillance applications and was recognized through publication in local newspapers.',
     sections: [
       {
-        title: 'What is YOLO (You Only Look Once)?',
-        type: 'text-list-image',
-        text: 'YOLO is a state-of-the-art real-time object detection algorithm. It processes the entire image in one go and predicts bounding boxes and class probabilities directly from the image pixels. YOLO is fast and efficient, making it suitable for applications like real-time fruit detection in agriculture.',
-        list: [
-          'Single-stage detector that provides high-speed predictions',
-          'Divides the image into grids and predicts bounding boxes for each grid cell',
-          'Achieves great balance between accuracy and speed'
-        ],
-        image: '/images/yolo.png',
-        imageAlt: 'YOLO Architecture Diagram'
-      },
-      {
-        title: 'What is FRCNN (Faster R-CNN)?',
-        type: 'text-list-image',
-        text: 'Faster R-CNN is a two-stage object detection model that improves upon previous versions like R-CNN and Fast R-CNN. It uses a Region Proposal Network (RPN) to generate regions of interest, significantly improving detection speed while maintaining accuracy.',
-        list: [
-          'Two-stage detector for higher accuracy',
-          'Uses a Region Proposal Network (RPN) to generate candidate object proposals',
-          'Highly accurate but slower compared to YOLO'
-        ],
-        image: '/images/frcnn.png',
-        imageAlt: 'FRCNN Architecture Diagram'
-      },
-      {
-        title: 'Results',
-        type: 'results-table',
-        text: 'The lower accuracy is due to the dataset used and its ground truth. The dataset had no ground truth bounding boxes for apples fallen on the floor, resulting in many false positives and reduced precision.'
-      },
-      {
-        title: 'Test Results',
-        type: 'image-grid',
-        images: [
-          '/images/test1.png',
-          '/images/test2.png',
-          '/images/test3.png',
-          '/images/test4.png',
-          '/images/test5.png',
-          '/images/test6.png'
-        ]
-      }
-    ],
-    links: [
-      {
-        label: 'Source Code',
-        url: 'https://github.com/snknitheesh/AppleDetectionML',
-        icon: 'github'
-      }
-    ]
-  },
-  'nvidia-jetson-vision': {
-    title: 'Exploring Vision with NVIDIA Jetson Orin Nano & Intel RealSense D457',
-    meta: 'Machine Vision · Depth Sensing · Real-time Processing',
-    desc: 'I recently worked on a project where I combined the NVIDIA Jetson Orin Nano and the Intel Corporation RealSense D457 depth camera to develop a machine vision application. This setup allowed me to perform basic object detection, motion tracking, and utilize point cloud data, unlocking huge possibilities for real-world applications.\n\nThis project emphasizes the importance of depth perception and real-time analysis in machine vision. With the Jetson Orin Nano\'s incredible processing power and the depth camera\'s spatial data, I explored how these technologies can bridge the gap between perception and action.',
-    sections: [
-      {
-        title: 'Hardware',
-        type: 'two-column-list',
-        cols: [
-          {
-            title: 'Intel RealSense D457 Depth Camera',
-            list: [
-              'Resolution: Up to 1280x720 pixels',
-              'Frame Rate: Up to 90 frames per second',
-              'Depth Range: 0.2 to 20 meters',
-              'Field of View: Wide field of view for enhanced depth perception',
-              'Connectivity: USB 3.1 Gen 1 for fast data transfer'
-            ]
-          },
-          {
-            title: 'NVIDIA Jetson Orin Nano (8GB)',
-            list: [
-              'GPU: 1024-core NVIDIA Ampere architecture GPU',
-              'CPU: 6-core ARM Cortex-A78AE',
-              'Memory: 8GB LPDDR5',
-              'Performance: Up to 40 TOPS (Tera Operations Per Second)',
-              'Connectivity: Gigabit Ethernet, multiple USB ports, and camera interfaces'
-            ]
-          }
-        ]
-      },
-      {
-        title: 'Software',
+        title: 'Key Features',
         type: 'list-only',
         list: [
-          'NVIDIA SDK: Tools for accelerated AI computations and seamless deployment',
-          'RealSense SDK: Software for processing depth data and integrating point clouds',
-          'Ubuntu: Operating system used for development and deployment'
+          'Voice interaction for hands-free control',
+          'SLAM-enabled autonomous navigation',
+          'Touchscreen interface for user interaction',
+          'IoT-based remote control and monitoring',
+          'Height-adjustable mechanism extending up to 5.5 feet',
+          'Custom human-like hand and 3D-printed robotic gripper',
+          'Health sensors: Heart Rate, SpO₂, Stress Monitoring',
+          'Environmental sensors: Gas detection'
         ]
-      },
-      {
-        title: 'Implemented Projects',
-        type: 'list-only',
-        list: [
-          'Object detection using a trained model',
-          'Motion detection',
-          'Point cloud viewing',
-          'Depth image acquisition'
-        ]
-      },
-      {
-        title: 'Hardware Assets',
-        type: 'two-col-images',
-        images: [
-          '/images/jetson.jpg',
-          '/images/realsense.png'
-        ]
-      },
-      {
-        title: 'Project Output',
-        type: 'single-image',
-        image: '/images/realsense.gif',
-        imageAlt: 'Project Output - Object Detection Demo'
-      }
-    ],
-    links: [
-      {
-        label: 'Source Code',
-        url: 'https://github.com/snknitheesh/Intel-Realsense-D457',
-        icon: 'github'
-      }
-    ]
-  },
-  'pololu-disaster-management': {
-    title: 'Pololu 3pi+ Robot Disaster Management Simulation',
-    meta: 'Arduino · Robotics · PID Control · Magnetometer',
-    desc: 'In this project, I programmed the Pololu 3pi+ robot using the Arduino IDE to simulate a disaster management scenario. The robot\'s mission is to locate magnets, which represent injured individuals, and follow a predefined workflow to indicate their positions.\n\nThe robot\'s primary objective is to locate injured individuals (magnets) in disaster zones and promptly return to alert rescue teams. Additionally, it marks the location of each magnet for further action.',
-    sections: [
-      {
-        title: 'Key Tasks',
-        type: 'list-only',
-        list: [
-          'Task 1: The robot starts from its home position and navigates to the search zone on the right side of the map. It searches for a magnet in this area.',
-          'Task 2: Once the robot detects a magnet at a random location (simulated by a dice roll), it returns to its home position. It then alerts the user and navigates back to the magnet\'s location.',
-          'Task 3: This task repeats Task 2 to ensure consistency and repeatability.'
-        ]
-      },
-      {
-        title: 'Hardware',
-        type: 'list-only',
-        list: [
-          'Pololu 3pi+ robot',
-          'Magnet to simulate injured individuals',
-          'Batteries and a pre-defined map for navigation'
-        ]
-      },
-      {
-        title: 'Software',
-        type: 'list-only',
-        list: [
-          'Arduino IDE: The Pololu 3pi+ controller is based on Arduino Leonardo',
-          'pid.h: Implements smooth control using a PID algorithm for precise navigation',
-          'magnetometer.h: Initializes the magnetometer to detect magnetic fields in the search zone',
-          'kinematics.h: Localizes the robot\'s position and orientation within the map',
-          'motors.h: Initializes and controls motor speeds to ensure smooth movement',
-          'encoders.h: Provides a subset of kinematics for accurate localization and distance tracking'
-        ]
-      },
-      {
-        title: 'Closing Thoughts',
-        type: 'text-only',
-        text: 'This project showcases how compact robotic platforms, such as the Pololu 3pi+, can be scaled and utilized in disaster management scenarios to offer precise search, localization, and alerting functionalities. Special thanks to Paul O\'Dowd for formulating a scalable application.'
       },
       {
         title: 'Robot Image',
         type: 'single-image',
-        image: '/images/pololu.jpg',
-        imageAlt: 'Pololu 3pi+ Robot'
+        image: '/images/humanoid-robot.jpg',
+        imageAlt: 'Multifunction Humanoid Robot'
+      },
+      {
+        title: 'Recognition',
+        type: 'text-only',
+        text: 'This project was recognized through publication in local newspapers, highlighting its innovative approach to humanoid robotics and practical applications in surveillance and monitoring.'
       }
     ],
     links: [
       {
-        label: 'Source Code',
-        url: 'https://github.com/snknitheesh/pololu3pi',
-        icon: 'github'
-      },
-      {
-        label: 'Video Demo',
-        url: 'https://youtu.be/OT463JCGn8Y?si=wrWv4jhDMjV-BxqB',
+        label: 'Watch Demo Video',
+        url: 'https://drive.google.com/file/d/1RYSNQFmxy3GvkFZgMdcNBSvpNKfY2Ys2/view?usp=drive_link',
         icon: 'video'
       }
     ]
   },
-  'first-tech-challenge': {
-    title: 'FTC Rover Ruckus Challenge',
-    meta: 'Jan 2019 – Jul 2019 · PSG College of Technology · Competitive Robotics',
-    desc: 'In the FTC Rover Ruckus Challenge, I was part of a robotics team that designed, programmed, and operated a robot to compete in a fast-paced, multi-phase robotics competition. The challenge included the Autonomous Period, Driver-Controlled Period, and Endgame, requiring innovative engineering and strategic gameplay.',
+  'volunteer-service-robot': {
+    title: 'Volunteer Service Robot',
+    meta: 'ESP32 · IoT · Robotics · Prize Distribution',
+    desc: 'Designed and developed a client-focused volunteer service robot for automated prize distribution and public engagement activities. The robot is powered by an ESP32 microcontroller and controlled through an IoT-based mobile interface, enabling wireless operation and real-time movement control. A key feature of the robot is its height-adjustable mechanism, allowing it to extend according to operational requirements and efficiently distribute prizes to participants during events.',
     sections: [
       {
-        title: 'Key Phases of the Competition',
-        type: 'phases',
-        phases: [
-          {
-            title: 'Autonomous Period',
-            text: 'Our robot successfully performed tasks such as landing, identifying and knocking over the gold mineral, placing a team marker in the depot, and parking on the crater, achieving the maximum possible points.'
-          },
-          {
-            title: 'Driver-Controlled Period',
-            text: 'We excelled in collecting and sorting minerals, ensuring the gold and silver minerals were deposited in their respective locations. Our efficient and precise robot design allowed us to outperform the competition.'
-          },
-          {
-            title: 'Endgame',
-            text: 'We showcased our robot\'s advanced capabilities by latching back onto the lander and parking inside the crater, maximizing our score in the final seconds of the match.'
-          }
+        title: 'Technical Specifications',
+        type: 'list-only',
+        list: [
+          'ESP32 microcontroller for processing and control',
+          'IoT-based mobile interface for wireless operation',
+          'Height-adjustable mechanism for flexible prize distribution',
+          'Real-time movement control',
+          'Designed for public engagement activities'
         ]
       },
+      {
+        title: 'Robot Image',
+        type: 'single-image',
+        image: '/images/volunteer-robot.jpg',
+        imageAlt: 'Volunteer Service Robot'
+      }
+    ],
+    links: [
+      {
+        label: 'Watch Demo Video',
+        url: 'https://drive.google.com/file/d/1YfseJY5O2eZma2jhbxoXlnzfOWp4Mnmj/view?usp=drive_link',
+        icon: 'video'
+      }
+    ]
+  },
+  'smart-irrigation-system': {
+    title: 'Smart Irrigation System',
+    meta: 'IoT · Embedded Systems · Sensor Integration · Smart Agriculture',
+    desc: 'Designed and implemented a Wi-Fi-enabled smart irrigation system in a real backyard environment using home automation technology. The system utilizes soil moisture sensors, humidity sensors, and a microcontroller to continuously monitor environmental conditions and automate watering based on plant requirements. By integrating wireless connectivity, the system enables remote monitoring and control, helping to reduce water consumption while maintaining optimal soil conditions.',
+    sections: [
+      {
+        title: 'Key Components',
+        type: 'list-only',
+        list: [
+          'Soil moisture sensors for real-time monitoring',
+          'Humidity sensors for environmental conditions',
+          'Wi-Fi connectivity for remote monitoring and control',
+          'Automated watering based on plant requirements',
+          'Water consumption optimization'
+        ]
+      },
+      {
+        title: 'System Image',
+        type: 'single-image',
+        image: '/images/irrigation-system.jpg',
+        imageAlt: 'Smart Irrigation System'
+      },
+      {
+        title: 'Impact',
+        type: 'text-only',
+        text: 'This project demonstrates practical experience in IoT, embedded systems, sensor integration, and smart agriculture applications, contributing to sustainable water management practices.'
+      }
+    ],
+    links: [
+      {
+        label: 'Watch Demo Video',
+        url: 'https://drive.google.com/file/d/1JakOQaKpexbzCDcJAiQ7VX9yAH4AozzY/view?usp=drive_link',
+        icon: 'video'
+      }
+    ]
+  },
+  'ir-leader-follower-robot': {
+    title: 'IR-Based Leader–Follower Robot',
+    meta: 'Pololu 3Pi · PID Control · Sensor Navigation · Robotics',
+    desc: 'Developed a leader–follower robotic system using Pololu 3Pi robots and infrared sensors. The follower robot detects and tracks the leader while maintaining a safe and consistent distance. PID control was implemented to improve tracking accuracy, stability, distance control, and smooth movement, while robot kinematics were used to calculate and control the robots\' motion.',
+    sections: [
+      {
+        title: 'Technical Approach',
+        type: 'list-only',
+        list: [
+          'Infrared sensors for leader detection and tracking',
+          'PID control for improved tracking accuracy and stability',
+          'Robot kinematics for motion calculation and control',
+          'Distance maintenance for safe following',
+          'Multi-robot coordination and communication'
+        ]
+      }
+    ],
+    links: [
+      {
+        label: 'Watch Demo Video',
+        url: 'https://drive.google.com/file/d/1EAUdv86B91_d1qLeZKF1qZJoeEvkf8YW/view?usp=drive_link',
+        icon: 'video'
+      }
+    ]
+  },
+  'bluetooth-home-automation': {
+    title: 'Bluetooth Home Automation System',
+    meta: 'Bluetooth · Embedded Systems · Home Automation',
+    desc: 'Developed a Bluetooth-enabled home automation system that allows household lights and electrical devices to be controlled wirelessly through a mobile phone interface. The system enables users to switch devices ON and OFF remotely, demonstrating practical skills in Bluetooth communication, embedded systems, and home automation.',
+    sections: [
+      {
+        title: 'Features',
+        type: 'list-only',
+        list: [
+          'Wireless control via Bluetooth',
+          'Mobile phone interface for user interaction',
+          'Remote ON/OFF control of lights and devices',
+          'Cost-effective home automation solution'
+        ]
+      }
+    ],
+    links: [
+      {
+        label: 'Watch Demo Video',
+        url: 'https://drive.google.com/file/d/19BqqyGUtO3TALolH5K9fLx0FgrEurOZl/view?usp=drive_link',
+        icon: 'video'
+      }
+    ]
+  },
+  'custom-drone-simulation': {
+    title: 'Custom Drone Simulation for Client',
+    meta: 'ROS 2 · PX4 · Gazebo · Drone Simulation · Ubuntu',
+    desc: 'Developed a customized drone simulation based on a client\'s requirements using Ubuntu Linux, ROS 2, PX4, and Gazebo. The drone model was modified to include a specially designed display screen mounted underneath the drone according to the required specifications. The screen was integrated into the simulation while maintaining stable drone operation, including take-off, controlled flight, and landing.',
+    sections: [
+      {
+        title: 'Technical Stack',
+        type: 'list-only',
+        list: [
+          'Ubuntu Linux operating system',
+          'ROS 2 for robotic middleware',
+          'PX4 for flight control',
+          'Gazebo for simulation environment',
+          'Custom drone modelling with display screen integration'
+        ]
+      },
+      {
+        title: 'Skills Demonstrated',
+        type: 'list-only',
+        list: [
+          'Robotic simulation and modelling',
+          'Custom drone design and integration',
+          'ROS 2 architecture and communication',
+          'PX4 flight control systems',
+          'Client-specific requirement implementation'
+        ]
+      }
+    ],
+    links: [
+      {
+        label: 'Watch Demo Video',
+        url: 'https://drive.google.com/file/d/1Z8i5tUWYv9itS5EuI7Qd26i6nMAEX2rk/view?usp=drive_link',
+        icon: 'video'
+      }
+    ]
+  },
+  'edge-detection-robot': {
+    title: 'Edge Detection Robot Using Pololu 3Pi',
+    meta: 'Pololu 3Pi · C++ · Sensor Integration · Robotics',
+    desc: 'Developed an edge detection robot using the Pololu 3Pi platform, infrared sensors, and C++ programming. The robot detects the edge of a surface in real time and automatically changes its direction to prevent falling.',
+    sections: [
       {
         title: 'Technical Details',
-        type: 'text-only',
-        text: 'We utilized a BeagleBone as the main hardware platform and developed the control logic using Python. For wireless communication, we implemented a ZigBee module, enabling seamless control and coordination during the competition.\n\nThis project honed my skills in programming, mechanical design, teamwork, and strategic thinking, further solidifying my passion for robotics and innovation.'
-      },
-      {
-        title: 'Robot In Action',
-        type: 'two-col-images',
-        images: [
-          '/images/rover1.png',
-          '/images/rover2.jpg'
+        type: 'list-only',
+        list: [
+          'Pololu 3Pi robot platform',
+          'Infrared sensors for edge detection',
+          'C++ programming for real-time control',
+          'Automatic direction change to prevent falls'
         ]
       }
     ],
     links: [
       {
-        label: 'Theme Explanation',
-        url: 'https://www.youtube.com/watch?v=rR4gR4l2XA8',
+        label: 'Watch Demo Video',
+        url: 'https://drive.google.com/file/d/1lnBip0pKpTGogD7jkPxh8SyS-0T_yflD/view?usp=drive_link',
         icon: 'video'
       }
     ]
   },
-  'self-driving-car': {
-    title: 'Self-Driving Car',
-    meta: 'Sep 2019 – May 2020 · Computer Vision · Kalman Filter · Autonomous Driving',
-    desc: 'I worked on a Self-Driving Car team project based on Mahindra Tech\'s E2o vehicle for autonomous driving. My primary contribution was integrating a conventional machine vision approach to aid in detecting lanes during driving.\n\nAdditionally, I implemented this approach to detect lanes and signs to integrate it with a machine learning-based approach using Kalman filters.',
+  'anti-sleep-smart-helmet': {
+    title: 'Anti-Sleep Smart Helmet',
+    meta: 'Embedded Systems · GPS · Safety · IoT',
+    desc: 'Developed an anti-sleep smart helmet designed to reduce road accidents caused by rider drowsiness. The system detects signs of sleep and alerts the rider to remain awake. It also includes a GPS module for real-time location tracking and a messaging system that sends the rider\'s location to a family member during an emergency, helping them arrange assistance quickly.',
     sections: [
       {
-        title: 'Vehicle',
-        type: 'single-image',
-        image: '/images/self-driving.png',
-        imageAlt: 'Self-Driving Car Project'
+        title: 'Key Features',
+        type: 'list-only',
+        list: [
+          'Sleep detection system to identify drowsiness',
+          'Real-time alerts to wake the rider',
+          'GPS module for location tracking',
+          'Emergency messaging system to notify family members',
+          'Safety-focused hardware development'
+        ]
       }
     ],
     links: [
       {
-        label: 'Project Details',
-        url: 'https://sarath-menon.github.io/car_new.html',
-        icon: 'external-link'
+        label: 'Watch Demo Video',
+        url: 'https://drive.google.com/file/d/1ffsRnTZ2VPWbSwsHWBqlUhOjdOf0RMrN/view?usp=drive_link',
+        icon: 'video'
+      }
+    ]
+  },
+  'smart-bicycle': {
+    title: 'Cloud-Connected Smart Bicycle for Children',
+    meta: 'IoT · Cloud Computing · GPS · Safety Innovation · IEEE Award',
+    desc: 'This project was inspired by a real incident in which a child riding at high speed collided with my car. To improve cycling safety, I developed a smart bicycle that allows parents to monitor their child\'s speed, health information, and real-time location through a cloud-connected mobile application.\n\nThe bicycle can be operated through both traditional pedals and app-based control. It also includes GPS tracking and an experimental assisted braking system designed to reduce the risk of accidents. Depending on the rider\'s weight and operating conditions, the bicycle can reach speeds of up to approximately 40 km/h. This project received First Prize at an IEEE competition for its innovation and safety-focused design.',
+    sections: [
+      {
+        title: 'Key Features',
+        type: 'list-only',
+        list: [
+          'Cloud-connected mobile application for monitoring',
+          'Speed tracking and health information monitoring',
+          'GPS location tracking for parental supervision',
+          'Traditional pedal and app-based operation',
+          'Experimental assisted braking system',
+          'Top speed of approximately 40 km/h'
+        ]
+      },
+      {
+        title: 'Award & Recognition',
+        type: 'text-only',
+        text: 'This project received First Prize at an IEEE competition for its innovation and safety-focused design, recognizing its potential to improve child safety during cycling.'
+      }
+    ],
+    links: [
+      {
+        label: 'Watch Demo Video',
+        url: 'https://drive.google.com/file/d/12Oz2quMzi2rqDnBDwsuffeJqWaBNxzk4/view?usp=drive_link',
+        icon: 'video'
+      }
+    ]
+  },
+  'national-drone-competition': {
+    title: 'National-Level Drone Flying Competition',
+    meta: 'Drone Piloting · Precision Control · Competition · Second Prize',
+    desc: 'Demonstrated advanced drone piloting skills in a national-level competition, achieving Second Prize. The performance highlighted precise control, focused flying, stable manoeuvring, quick decision-making, and the ability to operate the drone accurately under competitive conditions.',
+    sections: [
+      {
+        title: 'Skills Demonstrated',
+        type: 'list-only',
+        list: [
+          'Precise drone control and manoeuvring',
+          'Stable flight performance under competition pressure',
+          'Quick decision-making during challenging conditions',
+          'Accurate drone operation and navigation',
+          'Competitive drone piloting skills'
+        ]
+      },
+      {
+        title: 'Competition Achievement',
+        type: 'single-image',
+        image: '/images/drone-prize.jpg',
+        imageAlt: 'Second Prize in National Drone Competition'
+      }
+    ],
+    links: [
+      {
+        label: 'Watch Competition Highlights',
+        url: 'https://youtu.be/pyZlFBVpmgI?si=H_TS-QB08cTSMc8A',
+        icon: 'video'
+      },
+      {
+        label: 'Watch Drone Video',
+        url: 'https://drive.google.com/file/d/1xxYX7mtvbg1DNM-3qcy2mdcupnFTn7Ze/view?usp=drive_link',
+        icon: 'video'
+      }
+    ]
+  },
+  'custom-fpv-drone-naza': {
+    title: 'Custom-Built FPV Drone – DJI Naza V2',
+    meta: 'Drone Building · FPV · DJI Naza V2 · Flight Testing · World Robotics Championship',
+    desc: 'Designed, assembled, and flight-tested a custom FPV drone using the DJI Naza V2 flight controller. I built the complete drone on an FPV frame, including component selection, wiring, configuration, calibration, and PID tuning to achieve stable and responsive flight performance.\n\nI also participated with this drone in the World Robotics Championship, demonstrating my practical skills in drone construction, troubleshooting, flight-controller setup, and focused piloting. The flight testing involved controlled take-off and landing, altitude and orientation control, precise manoeuvring, stable hovering, throttle management, and smooth directional flight.',
+    sections: [
+      {
+        title: 'Build Details',
+        type: 'list-only',
+        list: [
+          'DJI Naza V2 flight controller',
+          'Custom FPV frame design and assembly',
+          'Component selection and integration',
+          'Wiring and system configuration',
+          'Calibration and PID tuning',
+          'Stable and responsive flight performance'
+        ]
+      },
+      {
+        title: 'Flight Testing',
+        type: 'list-only',
+        list: [
+          'Controlled take-off and landing',
+          'Altitude and orientation control',
+          'Precise manoeuvring and handling',
+          'Stable hovering capabilities',
+          'Throttle management for smooth flight',
+          'Smooth directional flight and turns'
+        ]
+      },
+      {
+        title: 'Certificate & Recognition',
+        type: 'single-image',
+        image: '/images/fpv-certificate.jpg',
+        imageAlt: 'FPV Pilot Certificate'
+      },
+      {
+        title: 'World Robotics Championship 2022',
+        type: 'text-only',
+        text: 'Participated in the Technoxian World Robotics Championship 2022, demonstrating practical skills in drone construction, troubleshooting, flight-controller setup, and focused piloting under competitive conditions.'
+      },
+      {
+        title: 'Watch Championship Video',
+        type: 'single-image',
+        image: 'https://img.youtube.com/vi/pyZlFBVpmgI/maxresdefault.jpg',
+        imageAlt: 'Technoxian World Robotics Championship 2022'
+      }
+    ],
+    links: [
+      {
+        label: 'Watch Championship Video',
+        url: 'https://youtu.be/pyZlFBVpmgI?si=H_TS-QB08cTSMc8A',
+        icon: 'video'
+      },
+      {
+        label: 'Watch Demo Video',
+        url: 'https://drive.google.com/file/d/1oZEuqmsZRZVFX6DYhzRs6mOtTgO5fAuW/view?usp=drive_link',
+        icon: 'video'
+      }
+    ]
+  },
+  'custom-fpv-whoop-drone': {
+    title: 'Custom-Built FPV Whoop Racing Drone',
+    meta: 'FPV Racing · SpeedyBee · Speed 100km/h · PID Tuning',
+    desc: 'Designed, assembled, configured, and flight-tested a custom FPV whoop racing drone using a SpeedyBee flight controller and an open-source flight-control platform. The drone was developed for high-speed racing and agile flight, reaching speeds of approximately 100 km/h under suitable conditions.\n\nThe build involved component selection, frame assembly, electronic wiring, receiver and video-system integration, firmware configuration, calibration, and PID tuning. Flight testing demonstrated rapid acceleration, responsive handling, stable cornering, precise throttle control, fast directional changes, and controlled take-off and landing.',
+    sections: [
+      {
+        title: 'Build Specifications',
+        type: 'list-only',
+        list: [
+          'SpeedyBee flight controller',
+          'Open-source flight-control platform',
+          'High-speed racing and agile flight design',
+          'Top speed of approximately 100 km/h',
+          'Component selection and frame assembly',
+          'Electronic wiring and system integration'
+        ]
+      },
+      {
+        title: 'Flight Performance',
+        type: 'list-only',
+        list: [
+          'Rapid acceleration and responsive handling',
+          'Stable cornering and precise throttle control',
+          'Fast directional changes and manoeuvring',
+          'Controlled take-off and landing',
+          'PID tuning for optimal performance'
+        ]
+      }
+    ],
+    links: [
+      {
+        label: 'Watch Demo Video',
+        url: 'https://drive.google.com/file/d/1oZEuqmsZRZVFX6DYhzRs6mOtTgO5fAuW/view?usp=drive_link', // Same as Naza, update if different
+        icon: 'video'
+      }
+    ]
+  },
+  'student-of-the-year': {
+    title: 'Student of the Year – Live Media Feature',
+    meta: 'Recognition · Media Feature · Leadership · Innovation',
+    desc: 'I was selected and featured in the live Student of the Year programme organised by Raj Ki Baat and presented by Parekh Brothers Jewellers. This recognition highlighted my achievements as a student, my contribution to robotics and drone projects, and my continuous interest in developing practical technology-based solutions.\n\nDuring the live programme, I had the opportunity to speak about my technical journey, project development experience, competition achievements, challenges, and motivation to work in robotics and innovation. The feature also recognised my dedication to learning, creativity, leadership, and practical engineering skills.\n\nBeing invited to this programme was an important milestone in my journey and encouraged me to continue building innovative systems that can solve real-world problems.',
+    sections: [
+      {
+        title: 'Topics Discussed',
+        type: 'list-only',
+        list: [
+          'Technical journey and project development experience',
+          'Competition achievements and challenges',
+          'Motivation to work in robotics and innovation',
+          'Dedication to learning and creativity',
+          'Leadership and practical engineering skills'
+        ]
+      },
+      {
+        title: 'Media Feature',
+        type: 'single-image',
+        image: '/images/student-of-year.jpg',
+        imageAlt: 'Student of the Year Award'
+      },
+      {
+        title: 'Impact',
+        type: 'text-only',
+        text: 'This recognition was an important milestone that encouraged me to continue building innovative systems that can solve real-world problems, validating my commitment to robotics and technology development.'
+      }
+    ],
+    links: [
+      {
+        label: 'Watch Feature',
+        url: 'https://youtu.be/pyZlFBVpmgI?si=H_TS-QB08cTSMc8A',
+        icon: 'video'
       }
     ]
   }
@@ -262,7 +449,6 @@ const ProjectDetail = () => {
   const project = projectData[projectId];
 
   useEffect(() => {
-    // Scroll animations trigger
     const elements = document.querySelectorAll('[data-animate]');
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {

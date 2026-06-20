@@ -1,0 +1,105 @@
+import React, { useEffect } from 'react';
+
+const Achievements = () => {
+  useEffect(() => {
+    const elements = document.querySelectorAll('[data-animate]');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const delay = entry.target.getAttribute('data-delay') || 0;
+          setTimeout(() => {
+            entry.target.classList.add('visible');
+          }, delay);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    elements.forEach(el => observer.observe(el));
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
+  return (
+    <main className="section page-section">
+      <h1 className="section-title" data-animate>Achievements</h1>
+
+      <div className="achievements-grid">
+        {/* Media Recognition */}
+        <div className="achievement-card glass-card" data-animate data-delay="100">
+          <div className="achievement-card-top">
+            <span className="achievement-icon">🎖️</span>
+            <span className="achievement-badge">Media Recognition</span>
+          </div>
+          <h3 className="achievement-title">Student of the Year – Live Media Feature</h3>
+          <p className="achievement-subtitle">
+            Selected and featured in the live <strong>Student of the Year</strong> programme organised by <strong>Raj Ki Baat</strong> and presented by <strong>Parekh Brothers Jewellers</strong>.
+          </p>
+          <div className="achievement-points">
+            <div className="achievement-point">
+              <span className="point-icon">▸</span>
+              <span>Recognition for robotics achievements</span>
+            </div>
+            <div className="achievement-point">
+              <span className="point-icon">▸</span>
+              <span>Recognition for drone projects</span>
+            </div>
+            <div className="achievement-point">
+              <span className="point-icon">▸</span>
+              <span>Technology innovation showcase</span>
+            </div>
+            <div className="achievement-point">
+              <span className="point-icon">▸</span>
+              <span>Live media appearance</span>
+            </div>
+            <div className="achievement-point">
+              <span className="point-icon">▸</span>
+              <span>Leadership and engineering excellence recognition</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Patent */}
+        <div className="achievement-card glass-card" data-animate data-delay="200">
+          <div className="achievement-card-top">
+            <span className="achievement-icon">🏅</span>
+            <span className="achievement-badge patent">Patent</span>
+          </div>
+          <h3 className="achievement-title">Smart and Secure Jewellery Box</h3>
+          <p className="achievement-subtitle">
+            <strong>Published Indian Patent Application</strong>
+          </p>
+          <p className="achievement-desc">
+            Developed a smart security solution designed to improve the safety and protection of valuable jewellery through intelligent monitoring and secure access mechanisms.
+          </p>
+          <div className="patent-details">
+            <div className="patent-row">
+              <span className="patent-label">Application Number:</span>
+              <span className="patent-value">202321073617</span>
+            </div>
+            <div className="patent-row">
+              <span className="patent-label">Status:</span>
+              <span className="patent-value">Published Indian Patent Application</span>
+            </div>
+            <div className="patent-row">
+              <span className="patent-label">Publication Date:</span>
+              <span className="patent-value">08 December 2023</span>
+            </div>
+          </div>
+          <a 
+            href="https://iprsearch.ipindia.gov.in/PatentSearch/PatentSearch/ViewApplicationStatus" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="patent-link"
+          >
+            View Patent Status →
+          </a>
+        </div>
+      </div>
+    </main>
+  );
+};
+
+export default Achievements;

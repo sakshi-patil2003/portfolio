@@ -78,7 +78,15 @@ const Home = () => {
     <>
       <section className="hero">
         <div className="hero-content" data-animate>
-          <img src="/images/dp.jpeg" alt="Tarun Dandekar" className="hero-photo" />
+          <img 
+  src="/images/dp.jpeg" 
+  alt="Tarun Dandekar" 
+  className="hero-photo"
+  style={{
+    objectFit: 'cover',
+    objectPosition: '50% 5%'  // Face focus ke liye
+  }}
+/>
           <h1>Tarun Dandekar</h1>
           <p className="hero-tagline">
             <span>{typedText}</span>

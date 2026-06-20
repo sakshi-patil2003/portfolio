@@ -33,44 +33,32 @@ const Skills = () => {
 
   const categories = [
     {
-      title: 'Robotics & Hardware',
+      title: '🤖 Robotics & Flight Control',
       delay: 100,
       skills: [
-        { name: 'ROS-2', level: '100%' },
-        { name: 'ArduPilot', level: '85%' },
-        { name: 'NVIDIA Jetson', level: '100%' },
-        { name: 'Intel RealSense', level: '85%' },
-        { name: 'ZED Camera', level: '85%' },
-        { name: 'ARM/AMD Processors', level: '100%' }
+        { name: 'ROS 2', level: '90%' },
+        { name: 'ArduPilot', level: '85%' }
       ]
     },
     {
-      title: 'Programming',
+      title: '🔧 Hardware & Embedded',
       delay: 200,
       skills: [
-        { name: 'Python', level: '100%' },
-        { name: 'C++', level: '80%' },
-        { name: 'MATLAB', level: '75%' },
-        { name: 'Machine Learning', level: '65%' }
+        { name: 'NVIDIA Jetson', level: '85%' },
+        { name: 'ARM Processors', level: '80%' },
+        { name: 'Embedded Systems', level: '85%' }
       ]
     },
     {
-      title: 'Simulation & Tools',
+      title: '💻 Programming, Simulation & Tools',
       delay: 300,
       skills: [
-        { name: 'CARLA Simulator', level: '70%' },
-        { name: 'Unreal Engine', level: '80%' },
-        { name: 'AirSim', level: '60%' },
-        { name: 'Simulation', level: '85%' }
-      ]
-    },
-    {
-      title: 'DevOps & Platforms',
-      delay: 400,
-      skills: [
-        { name: 'Docker', level: '100%' },
-        { name: 'Linux', level: '100%' },
-        { name: 'GitHub', level: '100%' }
+        { name: 'Python', level: '85%' },
+        { name: 'C++', level: '80%' },
+        { name: 'MATLAB', level: '70%' },
+        { name: 'Linux', level: '90%' },
+        { name: 'Simulation (Gazebo, CARLA)', level: '80%' },
+        { name: 'Machine Learning', level: '65%' }
       ]
     }
   ];
