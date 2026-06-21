@@ -22,12 +22,6 @@ const projectData = {
         ]
       },
       {
-        title: 'Robot Image',
-        type: 'single-image',
-        image: '/images/humanoid-robot.jpg',
-        imageAlt: 'Multifunction Humanoid Robot'
-      },
-      {
         title: 'Recognition',
         type: 'text-only',
         text: 'This project was recognized through publication in local newspapers, highlighting its innovative approach to humanoid robotics and practical applications in surveillance and monitoring.'
@@ -56,12 +50,6 @@ const projectData = {
           'Real-time movement control',
           'Designed for public engagement activities'
         ]
-      },
-      {
-        title: 'Robot Image',
-        type: 'single-image',
-        image: '/images/volunteer-robot.jpg',
-        imageAlt: 'Volunteer Service Robot'
       }
     ],
     links: [
@@ -87,12 +75,6 @@ const projectData = {
           'Automated watering based on plant requirements',
           'Water consumption optimization'
         ]
-      },
-      {
-        title: 'System Image',
-        type: 'single-image',
-        image: '/images/irrigation-system.jpg',
-        imageAlt: 'Smart Irrigation System'
       },
       {
         title: 'Impact',
@@ -288,12 +270,6 @@ const projectData = {
           'Accurate drone operation and navigation',
           'Competitive drone piloting skills'
         ]
-      },
-      {
-        title: 'Competition Achievement',
-        type: 'single-image',
-        image: '/images/drone-prize.jpg',
-        imageAlt: 'Second Prize in National Drone Competition'
       }
     ],
     links: [
@@ -339,21 +315,9 @@ const projectData = {
         ]
       },
       {
-        title: 'Certificate & Recognition',
-        type: 'single-image',
-        image: '/images/fpv-certificate.jpg',
-        imageAlt: 'FPV Pilot Certificate'
-      },
-      {
         title: 'World Robotics Championship 2022',
         type: 'text-only',
         text: 'Participated in the Technoxian World Robotics Championship 2022, demonstrating practical skills in drone construction, troubleshooting, flight-controller setup, and focused piloting under competitive conditions.'
-      },
-      {
-        title: 'Watch Championship Video',
-        type: 'single-image',
-        image: 'https://img.youtube.com/vi/pyZlFBVpmgI/maxresdefault.jpg',
-        imageAlt: 'Technoxian World Robotics Championship 2022'
       }
     ],
     links: [
@@ -401,7 +365,7 @@ const projectData = {
     links: [
       {
         label: 'Watch Demo Video',
-        url: 'https://drive.google.com/file/d/1oZEuqmsZRZVFX6DYhzRs6mOtTgO5fAuW/view?usp=drive_link', // Same as Naza, update if different
+        url: 'https://drive.google.com/file/d/1oZEuqmsZRZVFX6DYhzRs6mOtTgO5fAuW/view?usp=drive_link',
         icon: 'video'
       }
     ]
@@ -421,12 +385,6 @@ const projectData = {
           'Dedication to learning and creativity',
           'Leadership and practical engineering skills'
         ]
-      },
-      {
-        title: 'Media Feature',
-        type: 'single-image',
-        image: '/images/student-of-year.jpg',
-        imageAlt: 'Student of the Year Award'
       },
       {
         title: 'Impact',
@@ -498,21 +456,36 @@ const ProjectDetail = () => {
       </div>
 
       {project.sections && project.sections.map((section, idx) => {
-        if (section.type === 'text-list-image') {
+        if (section.type === 'list-only') {
           return (
             <div key={idx} className="project-detail-section glass-card" data-animate>
               <h2>{section.title}</h2>
-              <p>{section.text}</p>
               <ul>
                 {section.list.map((item, i) => (
                   <li key={i}>{item}</li>
                 ))}
               </ul>
-              {section.image && (
-                <img src={section.image} alt={section.imageAlt} className="project-image" loading="lazy" />
-              )}
             </div>
           );
+        }
+
+        if (section.type === 'text-only') {
+          return (
+            <div key={idx} className="project-detail-section glass-card" data-animate>
+              <h2>{section.title}</h2>
+              {section.text.split('\n\n').map((para, i) => (
+                <p key={i}>{para}</p>
+              ))}
+            </div>
+          );
+        }
+
+        // Skip all image types
+        if (section.type === 'single-image' || 
+            section.type === 'image-grid' || 
+            section.type === 'two-col-images' ||
+            section.type === 'text-list-image') {
+          return null;
         }
 
         if (section.type === 'results-table') {
@@ -546,19 +519,6 @@ const ProjectDetail = () => {
           );
         }
 
-        if (section.type === 'image-grid') {
-          return (
-            <div key={idx} className="project-detail-section" data-animate>
-              <h2 className="section-title">{section.title}</h2>
-              <div className="image-grid">
-                {section.images.map((img, i) => (
-                  <img key={i} src={img} alt={`Grid Item ${i + 1}`} loading="lazy" />
-                ))}
-              </div>
-            </div>
-          );
-        }
-
         if (section.type === 'two-column-list') {
           return (
             <div key={idx} className="project-detail-section glass-card" data-animate>
@@ -575,51 +535,6 @@ const ProjectDetail = () => {
                   </div>
                 ))}
               </div>
-            </div>
-          );
-        }
-
-        if (section.type === 'list-only') {
-          return (
-            <div key={idx} className="project-detail-section glass-card" data-animate>
-              <h2>{section.title}</h2>
-              <ul>
-                {section.list.map((item, i) => (
-                  <li key={i}>{item}</li>
-                ))}
-              </ul>
-            </div>
-          );
-        }
-
-        if (section.type === 'text-only') {
-          return (
-            <div key={idx} className="project-detail-section glass-card" data-animate>
-              <h2>{section.title}</h2>
-              {section.text.split('\n\n').map((para, i) => (
-                <p key={i}>{para}</p>
-              ))}
-            </div>
-          );
-        }
-
-        if (section.type === 'two-col-images') {
-          return (
-            <div key={idx} className="project-detail-section" data-animate>
-              <div className="two-col-images">
-                {section.images.map((img, i) => (
-                  <img key={i} src={img} alt={`Two Column Item ${i + 1}`} loading="lazy" />
-                ))}
-              </div>
-            </div>
-          );
-        }
-
-        if (section.type === 'single-image') {
-          return (
-            <div key={idx} className="project-detail-section glass-card" data-animate style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-              <h2>{section.title}</h2>
-              <img src={section.image} alt={section.imageAlt} className="project-image" loading="lazy" style={{ width: '100%', maxWidth: '800px' }} />
             </div>
           );
         }

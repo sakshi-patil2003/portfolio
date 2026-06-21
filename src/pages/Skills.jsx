@@ -33,32 +33,64 @@ const Skills = () => {
 
   const categories = [
     {
-      title: '🤖 Robotics & Flight Control',
+      title: '🤖 Robotics & Autonomy',
       delay: 100,
       skills: [
         { name: 'ROS 2', level: '90%' },
-        { name: 'ArduPilot', level: '85%' }
+        { name: 'PX4', level: '85%' },
+        { name: 'ArduPilot', level: '85%' },
+        { name: 'SLAM', level: '80%' },
+        { name: 'Path Planning', level: '75%' },
+        { name: 'PID Tuning', level: '85%' }
+      ]
+    },
+    {
+      title: '🚁 UAV Systems & Flight Control',
+      delay: 150,
+      skills: [
+        { name: 'Drone Integration', level: '85%' },
+        { name: 'QGroundControl', level: '80%' },
+        { name: 'Mission Planner', level: '80%' },
+        { name: 'MAVLink', level: '75%' },
+        { name: 'FPV Systems', level: '85%' }
       ]
     },
     {
       title: '🔧 Hardware & Embedded',
       delay: 200,
       skills: [
+        { name: 'Raspberry Pi', level: '85%' },
         { name: 'NVIDIA Jetson', level: '85%' },
+        { name: 'ESP32', level: '80%' },
         { name: 'ARM Processors', level: '80%' },
-        { name: 'Embedded Systems', level: '85%' }
+        { name: 'UART / I2C / SPI', level: '85%' },
+        { name: 'Sensor Interfacing', level: '85%' }
       ]
     },
     {
-      title: '💻 Programming, Simulation & Tools',
+      title: '💻 Programming & Simulation',
+      delay: 250,
+      skills: [
+        { name: 'Python', level: '90%' },
+        { name: 'C++', level: '80%' },
+        { name: 'Linux', level: '90%' },
+        { name: 'OpenCV', level: '75%' },
+        { name: 'Gazebo', level: '80%' },
+        { name: 'CARLA Simulator', level: '70%' },
+        { name: 'Machine Learning', level: '65%' }
+      ]
+    },
+    {
+      title: '📡 Sensors & Perception',
       delay: 300,
       skills: [
-        { name: 'Python', level: '85%' },
-        { name: 'C++', level: '80%' },
-        { name: 'MATLAB', level: '70%' },
-        { name: 'Linux', level: '90%' },
-        { name: 'Simulation (Gazebo, CARLA)', level: '80%' },
-        { name: 'Machine Learning', level: '65%' }
+        { name: 'LiDAR', level: '80%' },
+        { name: 'IMU', level: '85%' },
+        { name: 'GPS', level: '80%' },
+        { name: 'Cameras', level: '85%' },
+        { name: 'Microphone Arrays', level: '70%' },
+        { name: 'Ultrasonic Sensors', level: '85%' },
+        { name: 'IR Sensors', level: '80%' }
       ]
     }
   ];

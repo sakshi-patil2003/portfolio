@@ -24,13 +24,34 @@ const Experience = () => {
 
   const workExperience = [
     {
+      role: 'Drone Technician & UAV Systems Member',
+      company: 'University Drone Society',
+      type: 'Part-time',
+      duration: 'Dec 2025 – Sep 2026',
+      location: 'Bristol, UK',
+      logo: '/images/drone-society-logo.jpeg',
+      delay: 100,
+      points: [
+        'Built and assembled multirotor drones and RC aircraft',
+        'Configured flight controllers and radio transmitters/receivers',
+        'Performed soldering, wiring, and power distribution setup',
+        'Conducted pre-flight inspections and functional testing',
+        'Tuned PID parameters for stable and responsive flight',
+        'Calibrated ESCs, IMUs, and radio systems',
+        'Troubleshot hardware and communication issues',
+        'Assisted in flight testing and performance optimization',
+        'Worked with LiPo batteries and safety procedures',
+        'Gained practical experience with UAV hardware integration and maintenance'
+      ]
+    },
+    {
       role: 'Robotic Engineer',
       company: 'ROBOTRY',
       type: 'Full-time',
       duration: '1 Year Experience',
       location: 'Bristol, UK',
       logo: '/images/kinisi_robotics_logo.jpeg',
-      delay: 100,
+      delay: 200,
       points: [
         'Developed ROS packages for robotic systems',
         'Worked with NVIDIA Jetson embedded devices for hardware acceleration',

@@ -1,6 +1,25 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 const Achievements = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const certificateImages = [
+    { id: 1, src: '/images/drone-competition.jpeg', alt: 'Drone Competition' },
+    { id: 2, src: '/images/drone-prize.jpeg', alt: 'Drone Prize' },
+    { id: 3, src: '/images/fpv-certificate.jpeg', alt: 'FPV Certificate' },
+    { id: 4, src: '/images/humanoid-robot.jpeg', alt: 'Humanoid Robot' },
+    { id: 5, src: '/images/irrigation-system.jpeg', alt: 'Irrigation System' },
+    { id: 6, src: '/images/robot-photo2.jpeg', alt: 'Robot Photo' },
+    { id: 7, src: '/images/student-of-year.jpeg', alt: 'Student of the Year' },
+    { id: 8, src: '/images/volunteer-robot.jpeg', alt: 'Volunteer Robot' },
+    { id: 9, src: '/images/celestial-certificate.jpeg', alt: 'Celestial Certificate' }
+  ];
+
+  // Duplicate images for smooth infinite loop
+  const totalSlides = certificateImages.length;
+  const extendedImages = [...certificateImages, ...certificateImages, ...certificateImages];
+  const [isTransitioning, setIsTransitioning] = useState(true);
+
   useEffect(() => {
     const elements = document.querySelectorAll('[data-animate]');
     const observer = new IntersectionObserver((entries) => {
@@ -22,12 +41,62 @@ const Achievements = () => {
     };
   }, []);
 
+  // Auto slide
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => prev + 1);
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  // Handle infinite loop
+  useEffect(() => {
+    if (currentIndex >= totalSlides * 2) {
+      setIsTransitioning(false);
+      setTimeout(() => {
+        setCurrentIndex(totalSlides);
+        setIsTransitioning(true);
+      }, 50);
+    }
+  }, [currentIndex, totalSlides]);
+
+  const goToPrevious = () => {
+    if (currentIndex === 0) {
+      setIsTransitioning(false);
+      setCurrentIndex(totalSlides * 2 - 1);
+      setTimeout(() => setIsTransitioning(true), 50);
+      return;
+    }
+    setCurrentIndex(currentIndex - 1);
+  };
+
+  const goToNext = () => {
+    if (currentIndex >= totalSlides * 2 - 1) {
+      setIsTransitioning(false);
+      setCurrentIndex(totalSlides);
+      setTimeout(() => setIsTransitioning(true), 50);
+      return;
+    }
+    setCurrentIndex(currentIndex + 1);
+  };
+
+  const goToSlide = (index) => {
+    setIsTransitioning(false);
+    setCurrentIndex(index + totalSlides);
+    setTimeout(() => setIsTransitioning(true), 50);
+  };
+
+  const getRealIndex = () => {
+    return ((currentIndex % totalSlides) + totalSlides) % totalSlides;
+  };
+
   return (
     <main className="section page-section">
       <h1 className="section-title" data-animate>Achievements</h1>
 
+      {/* Top: 2 Cards Side by Side */}
       <div className="achievements-grid">
-        {/* Media Recognition */}
         <div className="achievement-card glass-card" data-animate data-delay="100">
           <div className="achievement-card-top">
             <span className="achievement-icon">🎖️</span>
@@ -61,7 +130,6 @@ const Achievements = () => {
           </div>
         </div>
 
-        {/* Patent */}
         <div className="achievement-card glass-card" data-animate data-delay="200">
           <div className="achievement-card-top">
             <span className="achievement-icon">🏅</span>
@@ -96,6 +164,48 @@ const Achievements = () => {
           >
             View Patent Status →
           </a>
+        </div>
+      </div>
+
+      {/* Simple Image Slider - Sirf Images */}
+      <div className="slider-section" data-animate data-delay="300">
+        <h2 className="slider-title"> Certificates & Achievements</h2>
+
+        <div className="slider-container">
+          <button className="slider-btn prev-btn" onClick={goToPrevious}>
+            ‹
+          </button>
+
+          <div className="slider-wrapper">
+            <div 
+              className="slider-track"
+              style={{ 
+                transform: `translateX(-${currentIndex * 100}%)`,
+                transition: isTransitioning ? 'transform 0.6s ease-in-out' : 'none'
+              }}
+            >
+              {extendedImages.map((img, index) => (
+                <div key={`${img.id}-${index}`} className="slider-slide">
+                  <img src={img.src} alt={img.alt} loading="lazy" />
+                  <p className="slide-label">{img.alt}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <button className="slider-btn next-btn" onClick={goToNext}>
+            ›
+          </button>
+        </div>
+
+        <div className="slider-dots">
+          {certificateImages.map((_, index) => (
+            <button
+              key={index}
+              className={`dot ${index === getRealIndex() ? 'active' : ''}`}
+              onClick={() => goToSlide(index)}
+            />
+          ))}
         </div>
       </div>
     </main>

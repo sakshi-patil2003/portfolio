@@ -28,6 +28,7 @@ const Education = () => {
       school: 'University of Bristol',
       duration: '2024 – 2025',
       location: 'Bristol, United Kingdom',
+      logo: '/images/university-of-bristol-logo.jpeg',
       delay: 100,
       points: [
         'Artificial Intelligence and Robotics',
@@ -40,9 +41,9 @@ const Education = () => {
     },
     {
       degree: 'B.Tech Artificial Intelligence and Data Science',
-      school: 'Priyadarshani College of Engineering,',
+      school: 'Priyadarshani College of Engineering',
       duration: '2017 – 2021',
-      location: 'Nagpur',
+      location: 'Nagpur, India',
       delay: 200,
       points: [
         'Artificial Intelligence and Machine Learning',
@@ -61,6 +62,9 @@ const Education = () => {
         {degrees.map((edu, index) => (
           <div key={index} className="timeline-item" data-animate data-delay={edu.delay}>
             <div className="timeline-card glass-card">
+              {edu.logo && (
+                <img src={edu.logo} alt={edu.school} className="company-logo" />
+              )}
               <h3>{edu.degree}</h3>
               <p className="company">{edu.school}</p>
               <p className="meta">{edu.duration} &middot; {edu.location}</p>
