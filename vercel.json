@@ -1,4 +1,5 @@
 {
+  "name": "tarun-portfolio",
   "rewrites": [
     { "source": "/(.*)", "destination": "/index.html" }
   ]
