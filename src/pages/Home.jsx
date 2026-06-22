@@ -79,15 +79,14 @@ const Home = () => {
     <>
       <section className="hero">
         <div className="hero-content" data-animate>
-          <img 
-            src="/images/dp.jpeg" 
-            alt="Tarun Dandekar" 
-            className="hero-photo"
-            style={{
-              objectFit: 'cover',
-              objectPosition: '50% 5%'
-            }}
-          />
+          {/* Photo - Center mein */}
+          <div className="hero-photo-wrapper">
+            <img 
+              src="/images/dp.jpeg" 
+              alt="Tarun Dandekar" 
+              className="hero-photo"
+            />
+          </div>
           <h1>Tarun Dandekar</h1>
           <p className="hero-tagline">
             <span>{typedText}</span>
@@ -110,14 +109,11 @@ const Home = () => {
       <section className="section" id="about">
         <h2 className="section-title" data-animate>About Me</h2>
         <div className="about-grid">
-          {/* Left Side - About Text */}
           <div className="about-text glass-card" data-animate data-delay="100">
             <p>MSc Robotics student with hands-on experience in robotics and drone systems, with a strong focus on hardware integration, autonomous systems, and embedded technologies. Experienced in working with Raspberry Pi, ESP32 microcontrollers, LiDAR sensors, cameras, microphone arrays, and wireless communication modules.</p>
             <p>My work includes autonomous mobile robots using ROS 2 and LiDAR-based navigation, swarm robotics using ESP-NOW communication, and drone-related projects involving sound localization and autonomous operation. I have practical experience in sensor integration, hardware testing, system calibration, troubleshooting, and integrating hardware with software frameworks such as ROS 2, PX4, and Gazebo.</p>
             <p>I am particularly interested in robotics, unmanned aerial vehicles (UAVs), autonomous navigation, sensing technologies, and intelligent systems for real-world applications.</p>
           </div>
-
-          {/* Right Side - 4 Cards Vertical with Gap */}
           <div className="about-right" data-animate data-delay="200">
             <div className="highlight-item glass-card">
               <span className="number">15+</span>

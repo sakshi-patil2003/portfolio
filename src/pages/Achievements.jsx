@@ -4,14 +4,14 @@ const Achievements = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const certificateImages = [
-    { id: 1, src: '/images/drone-competition.jpeg', alt: 'Drone Competition' },
+    { id: 1, src: '/images/drone-competition.jpeg', alt: 'Certificate of participation in International Robotics Championship' },
     { id: 2, src: '/images/drone-prize.jpeg', alt: 'Drone Prize' },
     { id: 3, src: '/images/fpv-certificate.jpeg', alt: 'FPV Certificate' },
     { id: 4, src: '/images/humanoid-robot.jpeg', alt: 'Humanoid Robot' },
-    { id: 5, src: '/images/irrigation-system.jpeg', alt: 'Irrigation System' },
-    { id: 6, src: '/images/robot-photo2.jpeg', alt: 'Robot Photo' },
+    { id: 5, src: '/images/irrigation-system.jpeg', alt: 'Winning Certificate in Space Technidarshan' },
+    { id: 6, src: '/images/robot-photo2.jpeg', alt: 'Certificate from JSW Foundation' },
     { id: 7, src: '/images/student-of-year.jpeg', alt: 'Student of the Year' },
-    { id: 8, src: '/images/volunteer-robot.jpeg', alt: 'Volunteer Robot' },
+    { id: 8, src: '/images/volunteer-robot.jpeg', alt: 'Certificate of ASFU Drone Weightlifting Challenge' },
     { id: 9, src: '/images/celestial-certificate.jpeg', alt: 'Celestial Certificate' }
   ];
 

@@ -37,8 +37,8 @@ const Skills = () => {
       delay: 100,
       skills: [
         { name: 'ROS 2', level: '90%' },
-        { name: 'PX4', level: '85%' },
-        { name: 'ArduPilot', level: '85%' },
+        { name: 'PX4', level: '100%' },
+        { name: 'ArduPilot', level: '100%' },
         { name: 'SLAM', level: '80%' },
         { name: 'Path Planning', level: '75%' },
         { name: 'PID Tuning', level: '85%' }
@@ -48,23 +48,23 @@ const Skills = () => {
       title: '🚁 UAV Systems & Flight Control',
       delay: 150,
       skills: [
-        { name: 'Drone Integration', level: '85%' },
-        { name: 'QGroundControl', level: '80%' },
-        { name: 'Mission Planner', level: '80%' },
-        { name: 'MAVLink', level: '75%' },
-        { name: 'FPV Systems', level: '85%' }
+        { name: 'Drone Integration', level: '100%' },
+        { name: 'QGroundControl', level: '100%' },
+        { name: 'Mission Planner', level: '100%' },
+        { name: 'MAVLink', level: '100%' },
+        { name: 'FPV Systems', level: '100%' }
       ]
     },
     {
       title: '🔧 Hardware & Embedded',
       delay: 200,
       skills: [
-        { name: 'Raspberry Pi', level: '85%' },
-        { name: 'NVIDIA Jetson', level: '85%' },
-        { name: 'ESP32', level: '80%' },
-        { name: 'ARM Processors', level: '80%' },
-        { name: 'UART / I2C / SPI', level: '85%' },
-        { name: 'Sensor Interfacing', level: '85%' }
+        { name: 'Raspberry Pi', level: '100%' },
+        { name: 'NVIDIA Jetson', level: '100%' },
+        { name: 'ESP32', level: '100' },
+        { name: 'ARM Processors', level: '100%' },
+        { name: 'UART / I2C / SPI', level: '100%' },
+        { name: 'Sensor Interfacing', level: '100%' }
       ]
     },
     {
@@ -84,13 +84,13 @@ const Skills = () => {
       title: '📡 Sensors & Perception',
       delay: 300,
       skills: [
-        { name: 'LiDAR', level: '80%' },
-        { name: 'IMU', level: '85%' },
-        { name: 'GPS', level: '80%' },
-        { name: 'Cameras', level: '85%' },
-        { name: 'Microphone Arrays', level: '70%' },
-        { name: 'Ultrasonic Sensors', level: '85%' },
-        { name: 'IR Sensors', level: '80%' }
+        { name: 'LiDAR', level: '100%' },
+        { name: 'IMU', level: '100%' },
+        { name: 'GPS', level: '100%' },
+        { name: 'Cameras', level: '100%' },
+        { name: 'Microphone Arrays', level: '100%' },
+        { name: 'Ultrasonic Sensors', level: '100%' },
+        { name: 'IR Sensors', level: '100%' }
       ]
     }
   ];

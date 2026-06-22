@@ -26,7 +26,7 @@ const Education = () => {
     {
       degree: 'MSc Robotics',
       school: 'University of Bristol',
-      duration: '2024 – 2025',
+      duration: '2025 – 2026',
       location: 'Bristol, United Kingdom',
       logo: '/images/university-of-bristol-logo.jpeg',
       delay: 100,
@@ -42,7 +42,7 @@ const Education = () => {
     {
       degree: 'B.Tech Artificial Intelligence and Data Science',
       school: 'Priyadarshani College of Engineering',
-      duration: '2017 – 2021',
+      duration: '2020-2024',
       location: 'Nagpur, India',
       delay: 200,
       points: [
