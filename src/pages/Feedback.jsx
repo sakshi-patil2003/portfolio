@@ -14,8 +14,7 @@ const Feedback = () => {
 
   // ✅ GOOGLE SHEETS URL - YAHAN DAALO
   const GOOGLE_SHEETS_URL = 'https://script.google.com/macros/s/AKfycbx71FWqwoutGf4rZGlTqHZv3xAj4xtbU-4z9AOahFR130ydGFpDrIhmjPULUgIGj6qwkg/exec';
-
-  // Admin check - Sirf Tarun delete kar sakta hai (email check)
+  // Admin check - Sirf Tarun delete kar sakta hai
   const isAdmin = (email) => {
     return email === 'tarundandekar128@gmail.com';
   };
@@ -50,11 +49,12 @@ const Feedback = () => {
     try {
       setIsLoading(true);
       const response = await fetch(GOOGLE_SHEETS_URL);
-      if (!response.ok) throw new Error('Failed to fetch');
+      if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
       const data = await response.json();
       setFeedbacks(data);
     } catch (err) {
       console.error('Error fetching feedback:', err);
+      alert('Failed to load feedback. Please refresh the page.');
     } finally {
       setIsLoading(false);
     }
@@ -82,9 +82,12 @@ const Feedback = () => {
     }
 
     try {
+      console.log('Submitting feedback...');
+      
       // 1. Google Sheets mein save karo
-      await fetch(GOOGLE_SHEETS_URL, {
+      const response = await fetch(GOOGLE_SHEETS_URL, {
         method: 'POST',
+        mode: 'no-cors', // CORS issue ko bypass
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           name: formData.name || 'Anonymous',
@@ -95,17 +98,24 @@ const Feedback = () => {
         })
       });
 
+      console.log('Google Sheets response:', response);
+
       // 2. FormSubmit se email bhejo (Tarun ko)
-      await fetch('https://formsubmit.co/ajax/tarundandekar128@gmail.com', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          name: formData.name || 'Anonymous',
-          email: formData.email || 'No email provided',
-          rating: ['', 'Poor', 'Fair', 'Good', 'Very Good', 'Excellent'][formData.rating],
-          feedback: formData.feedback || 'No feedback provided'
-        })
-      });
+      try {
+        await fetch('https://formsubmit.co/ajax/tarundandekar128@gmail.com', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name: formData.name || 'Anonymous',
+            email: formData.email || 'No email provided',
+            rating: ['', 'Poor', 'Fair', 'Good', 'Very Good', 'Excellent'][formData.rating],
+            feedback: formData.feedback || 'No feedback provided'
+          })
+        });
+      } catch (emailErr) {
+        console.error('Email send failed:', emailErr);
+        // Email fail hone par bhi feedback save ho jayega
+      }
 
       setIsSubmitted(true);
       setTimeout(() => setIsSubmitted(false), 3000);
@@ -117,8 +127,8 @@ const Feedback = () => {
       await fetchFeedback();
 
     } catch (err) {
-      alert('Failed to submit feedback. Please try again.');
-      console.error(err);
+      console.error('Submit error:', err);
+      alert(`Failed to submit feedback: ${err.message}`);
     }
   };
 
@@ -253,7 +263,6 @@ const Feedback = () => {
                         <span className="stars">{renderStars(parseInt(fb.Rating || fb.rating) || 0)}</span>
                         <span className="rating-text">{fb.RatingLabel || fb.ratingLabel}</span>
                       </div>
-                      {/* Sirf Tarun (Admin) Delete Kar Sakta Hai */}
                       {isAdmin(formData.email) && (
                         <button 
                           className="feedback-delete-btn"
