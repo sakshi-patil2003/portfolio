@@ -35,6 +35,37 @@ const projectData = {
       }
     ]
   },
+  'smart-bicycle': {
+    title: 'Cloud-Connected Smart Bicycle',
+    meta: 'IoT · Cloud Computing · GPS · Safety Innovation · IEEE Award',
+    desc: 'This project was inspired by a real incident in which a child riding at high speed collided with my car. To improve cycling safety, I developed a smart bicycle that allows parents to monitor their child\'s speed, health information, and real-time location through a cloud-connected mobile application.\n\nThe bicycle can be operated through both traditional pedals and app-based control. It also includes GPS tracking and an experimental assisted braking system designed to reduce the risk of accidents. Depending on the rider\'s weight and operating conditions, the bicycle can reach speeds of up to approximately 40 km/h. This project received First Prize at an IEEE competition for its innovation and safety-focused design.',
+    sections: [
+      {
+        title: 'Key Features',
+        type: 'list-only',
+        list: [
+          'Cloud-connected mobile application for monitoring',
+          'Speed tracking and health information monitoring',
+          'GPS location tracking for parental supervision',
+          'Traditional pedal and app-based operation',
+          'Experimental assisted braking system',
+          'Top speed of approximately 40 km/h'
+        ]
+      },
+      {
+        title: 'Award & Recognition',
+        type: 'text-only',
+        text: 'This project received First Prize at an IEEE competition for its innovation and safety-focused design, recognizing its potential to improve child safety during cycling.'
+      }
+    ],
+    links: [
+      {
+        label: 'Watch Demo Video',
+        url: 'https://drive.google.com/file/d/1ffsRnTZ2VPWbSwsHWBqlUhOjdOf0RMrN/view?usp=drive_link',
+        icon: 'video'
+      }
+    ]
+  },
   'volunteer-service-robot': {
     title: 'Volunteer Service Robot',
     meta: 'ESP32 · IoT · Robotics · Prize Distribution',
@@ -90,55 +121,6 @@ const projectData = {
       }
     ]
   },
-  'ir-leader-follower-robot': {
-    title: 'IR-Based Leader–Follower Robot',
-    meta: 'Pololu 3Pi · PID Control · Sensor Navigation · Robotics',
-    desc: 'Developed a leader–follower robotic system using Pololu 3Pi robots and infrared sensors. The follower robot detects and tracks the leader while maintaining a safe and consistent distance. PID control was implemented to improve tracking accuracy, stability, distance control, and smooth movement, while robot kinematics were used to calculate and control the robots\' motion.',
-    sections: [
-      {
-        title: 'Technical Approach',
-        type: 'list-only',
-        list: [
-          'Infrared sensors for leader detection and tracking',
-          'PID control for improved tracking accuracy and stability',
-          'Robot kinematics for motion calculation and control',
-          'Distance maintenance for safe following',
-          'Multi-robot coordination and communication'
-        ]
-      }
-    ],
-    links: [
-      {
-        label: 'Watch Demo Video',
-        url: 'https://drive.google.com/file/d/1EAUdv86B91_d1qLeZKF1qZJoeEvkf8YW/view?usp=drive_link',
-        icon: 'video'
-      }
-    ]
-  },
-  'bluetooth-home-automation': {
-    title: 'Bluetooth Home Automation System',
-    meta: 'Bluetooth · Embedded Systems · Home Automation',
-    desc: 'Developed a Bluetooth-enabled home automation system that allows household lights and electrical devices to be controlled wirelessly through a mobile phone interface. The system enables users to switch devices ON and OFF remotely, demonstrating practical skills in Bluetooth communication, embedded systems, and home automation.',
-    sections: [
-      {
-        title: 'Features',
-        type: 'list-only',
-        list: [
-          'Wireless control via Bluetooth',
-          'Mobile phone interface for user interaction',
-          'Remote ON/OFF control of lights and devices',
-          'Cost-effective home automation solution'
-        ]
-      }
-    ],
-    links: [
-      {
-        label: 'Watch Demo Video',
-        url: 'https://drive.google.com/file/d/19BqqyGUtO3TALolH5K9fLx0FgrEurOZl/view?usp=drive_link',
-        icon: 'video'
-      }
-    ]
-  },
   'custom-drone-simulation': {
     title: 'Custom Drone Simulation for Client',
     meta: 'ROS 2 · PX4 · Gazebo · Drone Simulation · Ubuntu',
@@ -175,118 +157,8 @@ const projectData = {
       }
     ]
   },
-  'edge-detection-robot': {
-    title: 'Edge Detection Robot Using Pololu 3Pi',
-    meta: 'Pololu 3Pi · C++ · Sensor Integration · Robotics',
-    desc: 'Developed an edge detection robot using the Pololu 3Pi platform, infrared sensors, and C++ programming. The robot detects the edge of a surface in real time and automatically changes its direction to prevent falling.',
-    sections: [
-      {
-        title: 'Technical Details',
-        type: 'list-only',
-        list: [
-          'Pololu 3Pi robot platform',
-          'Infrared sensors for edge detection',
-          'C++ programming for real-time control',
-          'Automatic direction change to prevent falls'
-        ]
-      }
-    ],
-    links: [
-      {
-        label: 'Watch Demo Video',
-        url: 'https://drive.google.com/file/d/1lnBip0pKpTGogD7jkPxh8SyS-0T_yflD/view?usp=drive_link',
-        icon: 'video'
-      }
-    ]
-  },
-  'anti-sleep-smart-helmet': {
-    title: 'Anti-Sleep Smart Helmet',
-    meta: 'Embedded Systems · GPS · Safety · IoT',
-    desc: 'Developed an anti-sleep smart helmet designed to reduce road accidents caused by rider drowsiness. The system detects signs of sleep and alerts the rider to remain awake. It also includes a GPS module for real-time location tracking and a messaging system that sends the rider\'s location to a family member during an emergency, helping them arrange assistance quickly.',
-    sections: [
-      {
-        title: 'Key Features',
-        type: 'list-only',
-        list: [
-          'Sleep detection system to identify drowsiness',
-          'Real-time alerts to wake the rider',
-          'GPS module for location tracking',
-          'Emergency messaging system to notify family members',
-          'Safety-focused hardware development'
-        ]
-      }
-    ],
-    links: [
-      {
-        label: 'Watch Demo Video',
-        url: 'https://drive.google.com/file/d/1ffsRnTZ2VPWbSwsHWBqlUhOjdOf0RMrN/view?usp=drive_link',
-        icon: 'video'
-      }
-    ]
-  },
-  'smart-bicycle': {
-    title: 'Cloud-Connected Smart Bicycle for Children',
-    meta: 'IoT · Cloud Computing · GPS · Safety Innovation · IEEE Award',
-    desc: 'This project was inspired by a real incident in which a child riding at high speed collided with my car. To improve cycling safety, I developed a smart bicycle that allows parents to monitor their child\'s speed, health information, and real-time location through a cloud-connected mobile application.\n\nThe bicycle can be operated through both traditional pedals and app-based control. It also includes GPS tracking and an experimental assisted braking system designed to reduce the risk of accidents. Depending on the rider\'s weight and operating conditions, the bicycle can reach speeds of up to approximately 40 km/h. This project received First Prize at an IEEE competition for its innovation and safety-focused design.',
-    sections: [
-      {
-        title: 'Key Features',
-        type: 'list-only',
-        list: [
-          'Cloud-connected mobile application for monitoring',
-          'Speed tracking and health information monitoring',
-          'GPS location tracking for parental supervision',
-          'Traditional pedal and app-based operation',
-          'Experimental assisted braking system',
-          'Top speed of approximately 40 km/h'
-        ]
-      },
-      {
-        title: 'Award & Recognition',
-        type: 'text-only',
-        text: 'This project received First Prize at an IEEE competition for its innovation and safety-focused design, recognizing its potential to improve child safety during cycling.'
-      }
-    ],
-    links: [
-      {
-        label: 'Watch Demo Video',
-        url: 'https://drive.google.com/file/d/12Oz2quMzi2rqDnBDwsuffeJqWaBNxzk4/view?usp=drive_link',
-        icon: 'video'
-      }
-    ]
-  },
-  'national-drone-competition': {
-    title: 'National-Level Drone Flying Competition',
-    meta: 'Drone Piloting · Precision Control · Competition · Second Prize',
-    desc: 'Demonstrated advanced drone piloting skills in a national-level competition, achieving Second Prize. The performance highlighted precise control, focused flying, stable manoeuvring, quick decision-making, and the ability to operate the drone accurately under competitive conditions.',
-    sections: [
-      {
-        title: 'Skills Demonstrated',
-        type: 'list-only',
-        list: [
-          'Precise drone control and manoeuvring',
-          'Stable flight performance under competition pressure',
-          'Quick decision-making during challenging conditions',
-          'Accurate drone operation and navigation',
-          'Competitive drone piloting skills'
-        ]
-      }
-    ],
-    links: [
-      {
-        label: 'Watch Competition Highlights',
-        url: 'https://youtu.be/pyZlFBVpmgI?si=H_TS-QB08cTSMc8A',
-        icon: 'video'
-      },
-      {
-        label: 'Watch Drone Video',
-        url: 'https://drive.google.com/file/d/1xxYX7mtvbg1DNM-3qcy2mdcupnFTn7Ze/view?usp=drive_link',
-        icon: 'video'
-      }
-    ]
-  },
   'custom-fpv-drone-naza': {
-    title: 'Custom-Built FPV Drone – DJI Naza V2',
+    title: 'DJI Naza V2',
     meta: 'Drone Building · FPV · DJI Naza V2 · Flight Testing · World Robotics Championship',
     desc: 'Designed, assembled, and flight-tested a custom FPV drone using the DJI Naza V2 flight controller. I built the complete drone on an FPV frame, including component selection, wiring, configuration, calibration, and PID tuning to achieve stable and responsive flight performance.\n\nI also participated with this drone in the World Robotics Championship, demonstrating my practical skills in drone construction, troubleshooting, flight-controller setup, and focused piloting. The flight testing involved controlled take-off and landing, altitude and orientation control, precise manoeuvring, stable hovering, throttle management, and smooth directional flight.',
     sections: [
@@ -321,14 +193,138 @@ const projectData = {
       }
     ],
     links: [
+      // {
+      //   label: 'Watch Championship Video',
+      //   url: 'https://youtu.be/pyZlFBVpmgI?si=H_TS-QB08cTSMc8A',
+      //   icon: 'video'
+      // },
       {
-        label: 'Watch Championship Video',
+        label: 'Watch Demo Video',
+        url: 'https://drive.google.com/file/d/1xxYX7mtvbg1DNM-3qcy2mdcupnFTn7Ze/view?usp=drive_link', // ✅ Drone flying Tarun video
+        icon: 'video'
+      }
+    ]
+  },
+  'edge-detection-robot': {
+    title: 'Edge Detection Robot Using Pololu 3Pi',
+    meta: 'Pololu 3Pi · C++ · Sensor Integration · Robotics',
+    desc: 'Developed an edge detection robot using the Pololu 3Pi platform, infrared sensors, and C++ programming. The robot detects the edge of a surface in real time and automatically changes its direction to prevent falling.',
+    sections: [
+      {
+        title: 'Technical Details',
+        type: 'list-only',
+        list: [
+          'Pololu 3Pi robot platform',
+          'Infrared sensors for edge detection',
+          'C++ programming for real-time control',
+          'Automatic direction change to prevent falls'
+        ]
+      }
+    ],
+    links: [
+      {
+        label: 'Watch Demo Video',
+        url: 'https://drive.google.com/file/d/12Oz2quMzi2rqDnBDwsuffeJqWaBNxzk4/view?usp=drive_link',
+        icon: 'video'
+      }
+    ]
+  },
+  'bluetooth-home-automation': {
+    title: 'Bluetooth Home Automation System',
+    meta: 'Bluetooth · Embedded Systems · Home Automation',
+    desc: 'Developed a Bluetooth-enabled home automation system that allows household lights and electrical devices to be controlled wirelessly through a mobile phone interface. The system enables users to switch devices ON and OFF remotely, demonstrating practical skills in Bluetooth communication, embedded systems, and home automation.',
+    sections: [
+      {
+        title: 'Features',
+        type: 'list-only',
+        list: [
+          'Wireless control via Bluetooth',
+          'Mobile phone interface for user interaction',
+          'Remote ON/OFF control of lights and devices',
+          'Cost-effective home automation solution'
+        ]
+      }
+    ],
+    links: [
+      {
+        label: 'Watch Demo Video',
+        url: 'https://drive.google.com/file/d/1oZEuqmsZRZVFX6DYhzRs6mOtTgO5fAuW/view?usp=drive_link',
+        icon: 'video'
+      }
+    ]
+  },
+  'ir-leader-follower-robot': {
+    title: 'IR-Based Leader–Follower Robot',
+    meta: 'Pololu 3Pi · PID Control · Sensor Navigation · Robotics',
+    desc: 'Developed a leader–follower robotic system using Pololu 3Pi robots and infrared sensors. The follower robot detects and tracks the leader while maintaining a safe and consistent distance. PID control was implemented to improve tracking accuracy, stability, distance control, and smooth movement, while robot kinematics were used to calculate and control the robots\' motion.',
+    sections: [
+      {
+        title: 'Technical Approach',
+        type: 'list-only',
+        list: [
+          'Infrared sensors for leader detection and tracking',
+          'PID control for improved tracking accuracy and stability',
+          'Robot kinematics for motion calculation and control',
+          'Distance maintenance for safe following',
+          'Multi-robot coordination and communication'
+        ]
+      }
+    ],
+    links: [
+      {
+        label: 'Watch Demo Video',
+        url: 'https://drive.google.com/file/d/1lnBip0pKpTGogD7jkPxh8SyS-0T_yflD/view?usp=drive_link',
+        icon: 'video'
+      }
+    ]
+  },
+  'anti-sleep-smart-helmet': {
+    title: 'Anti-Sleep Smart Helmet',
+    meta: 'Embedded Systems · GPS · Safety · IoT',
+    desc: 'Developed an anti-sleep smart helmet designed to reduce road accidents caused by rider drowsiness. The system detects signs of sleep and alerts the rider to remain awake. It also includes a GPS module for real-time location tracking and a messaging system that sends the rider\'s location to a family member during an emergency, helping them arrange assistance quickly.',
+    sections: [
+      {
+        title: 'Key Features',
+        type: 'list-only',
+        list: [
+          'Sleep detection system to identify drowsiness',
+          'Real-time alerts to wake the rider',
+          'GPS module for location tracking',
+          'Emergency messaging system to notify family members',
+          'Safety-focused hardware development'
+        ]
+      }
+    ],
+    links: [
+      // ❌ No video link - only image
+    ]
+  },
+  'national-drone-competition': {
+    title: 'National-Level Drone Flying Competition',
+    meta: 'Drone Piloting · Precision Control · Competition · Second Prize',
+    desc: 'Demonstrated advanced drone piloting skills in a national-level competition, achieving Second Prize. The performance highlighted precise control, focused flying, stable manoeuvring, quick decision-making, and the ability to operate the drone accurately under competitive conditions.',
+    sections: [
+      {
+        title: 'Skills Demonstrated',
+        type: 'list-only',
+        list: [
+          'Precise drone control and manoeuvring',
+          'Stable flight performance under competition pressure',
+          'Quick decision-making during challenging conditions',
+          'Accurate drone operation and navigation',
+          'Competitive drone piloting skills'
+        ]
+      }
+    ],
+    links: [
+      {
+        label: 'Watch Competition Highlights',
         url: 'https://youtu.be/pyZlFBVpmgI?si=H_TS-QB08cTSMc8A',
         icon: 'video'
       },
       {
-        label: 'Watch Demo Video',
-        url: 'https://drive.google.com/file/d/1oZEuqmsZRZVFX6DYhzRs6mOtTgO5fAuW/view?usp=drive_link',
+        label: 'Watch Drone Video',
+        url: 'https://drive.google.com/file/d/1EAUdv86B91_d1qLeZKF1qZJoeEvkf8YW/view?usp=drive_link', // ✅ Correct video
         icon: 'video'
       }
     ]
@@ -365,37 +361,7 @@ const projectData = {
     links: [
       {
         label: 'Watch Demo Video',
-        url: 'https://drive.google.com/file/d/1oZEuqmsZRZVFX6DYhzRs6mOtTgO5fAuW/view?usp=drive_link',
-        icon: 'video'
-      }
-    ]
-  },
-  'student-of-the-year': {
-    title: 'Student of the Year – Live Media Feature',
-    meta: 'Recognition · Media Feature · Leadership · Innovation',
-    desc: 'I was selected and featured in the live Student of the Year programme organised by Raj Ki Baat and presented by Parekh Brothers Jewellers. This recognition highlighted my achievements as a student, my contribution to robotics and drone projects, and my continuous interest in developing practical technology-based solutions.\n\nDuring the live programme, I had the opportunity to speak about my technical journey, project development experience, competition achievements, challenges, and motivation to work in robotics and innovation. The feature also recognised my dedication to learning, creativity, leadership, and practical engineering skills.\n\nBeing invited to this programme was an important milestone in my journey and encouraged me to continue building innovative systems that can solve real-world problems.',
-    sections: [
-      {
-        title: 'Topics Discussed',
-        type: 'list-only',
-        list: [
-          'Technical journey and project development experience',
-          'Competition achievements and challenges',
-          'Motivation to work in robotics and innovation',
-          'Dedication to learning and creativity',
-          'Leadership and practical engineering skills'
-        ]
-      },
-      {
-        title: 'Impact',
-        type: 'text-only',
-        text: 'This recognition was an important milestone that encouraged me to continue building innovative systems that can solve real-world problems, validating my commitment to robotics and technology development.'
-      }
-    ],
-    links: [
-      {
-        label: 'Watch Feature',
-        url: 'https://youtu.be/pyZlFBVpmgI?si=H_TS-QB08cTSMc8A',
+        url: 'https://drive.google.com/file/d/19BqqyGUtO3TALolH5K9fLx0FgrEurOZl/view?usp=drive_link', // ✅ Drone flying Tarun video
         icon: 'video'
       }
     ]

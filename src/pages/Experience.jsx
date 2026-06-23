@@ -58,6 +58,21 @@ const Experience = () => {
         'Integrated perception pipelines for advanced robotics applications',
         'Deployed Docker containers for efficient robot operations'
       ]
+    },
+    {
+      role: 'Workshop Resource Person (FPV & UAV Technology)',
+      company: 'S.B. Jain Institute of Technology, Management and Research, Nagpur',
+      type: 'Workshop',
+      duration: 'July 2025',
+      location: 'Nagpur, India',
+      logo: '/images/sb-jain-logo.jpeg',
+      delay: 300,
+      points: [
+        'Invited as a Resource Person to conduct a two-day workshop on "Design & Development of FPVs for Innovation and Startup Applications"',
+        'Delivered technical sessions on FPV drone systems, UAV technologies, and development methodologies',
+        'Conducted practical demonstrations and interactive discussions for engineering students from various disciplines',
+        'Shared insights on drone innovation, system integration, and entrepreneurial opportunities in UAV technology'
+      ]
     }
   ];
 

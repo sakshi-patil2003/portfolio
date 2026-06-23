@@ -12,7 +12,9 @@ const Achievements = () => {
     { id: 6, src: '/images/robot-photo2.jpeg', alt: 'Certificate from JSW Foundation' },
     { id: 7, src: '/images/student-of-year.jpeg', alt: 'Student of the Year' },
     { id: 8, src: '/images/volunteer-robot.jpeg', alt: 'Certificate of ASFU Drone Weightlifting Challenge' },
-    { id: 9, src: '/images/celestial-certificate.jpeg', alt: 'Celestial Certificate' }
+    { id: 9, src: '/images/celestial-certificate.jpeg', alt: 'Celestial Certificate' },
+    { id: 10, src: '/images/appreciation-note.jpeg', alt: 'Appreciation Note' },        // ← NEW
+    { id: 11, src: '/images/guest-of-honour.jpeg', alt: 'Guest of Honour' }              // ← NEW
   ];
 
   // Duplicate images for smooth infinite loop
@@ -169,7 +171,7 @@ const Achievements = () => {
 
       {/* Simple Image Slider - Sirf Images */}
       <div className="slider-section" data-animate data-delay="300">
-        <h2 className="slider-title"> Certificates & Achievements</h2>
+        <h2 className="slider-title">📸 Certificates & Achievements</h2>
 
         <div className="slider-container">
           <button className="slider-btn prev-btn" onClick={goToPrevious}>

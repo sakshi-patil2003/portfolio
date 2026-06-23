@@ -61,7 +61,7 @@ const Skills = () => {
       skills: [
         { name: 'Raspberry Pi', level: '100%' },
         { name: 'NVIDIA Jetson', level: '100%' },
-        { name: 'ESP32', level: '100' },
+        { name: 'ESP32', level: '100%' },
         { name: 'ARM Processors', level: '100%' },
         { name: 'UART / I2C / SPI', level: '100%' },
         { name: 'Sensor Interfacing', level: '100%' }

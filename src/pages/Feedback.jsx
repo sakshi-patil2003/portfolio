@@ -10,9 +10,15 @@ const Feedback = () => {
   const [hoverRating, setHoverRating] = useState(0);
   const [feedbacks, setFeedbacks] = useState([]);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
-  // Admin check - Sirf owner delete kar sakta hai
-  const isAdmin = true; // Ya tum chahte ho toh password/email check lagao
+  // ✅ GOOGLE SHEETS URL - YAHAN DAALO
+  const GOOGLE_SHEETS_URL = 'https://script.google.com/macros/s/AKfycbx71FWqwoutGf4rZGlTqHZv3xAj4xtbU-4z9AOahFR130ydGFpDrIhmjPULUgIGj6qwkg/exec';
+
+  // Admin check - Sirf Tarun delete kar sakta hai (email check)
+  const isAdmin = (email) => {
+    return email === 'tarundandekar128@gmail.com';
+  };
 
   useEffect(() => {
     const elements = document.querySelectorAll('[data-animate]');
@@ -35,16 +41,24 @@ const Feedback = () => {
     };
   }, []);
 
+  // Load feedbacks from Google Sheets
   useEffect(() => {
-    const saved = localStorage.getItem('feedbacks');
-    if (saved) {
-      try {
-        setFeedbacks(JSON.parse(saved));
-      } catch (e) {
-        setFeedbacks([]);
-      }
-    }
+    fetchFeedback();
   }, []);
+
+  const fetchFeedback = async () => {
+    try {
+      setIsLoading(true);
+      const response = await fetch(GOOGLE_SHEETS_URL);
+      if (!response.ok) throw new Error('Failed to fetch');
+      const data = await response.json();
+      setFeedbacks(data);
+    } catch (err) {
+      console.error('Error fetching feedback:', err);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   const handleChange = (e) => {
     setFormData({
@@ -60,45 +74,58 @@ const Feedback = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (formData.rating === 0) {
       alert('Please select a rating! ⭐');
       return;
     }
 
-    const newFeedback = {
-      id: Date.now(),
-      name: formData.name || 'Anonymous',
-      email: formData.email || 'No email provided',
-      rating: formData.rating,
-      ratingLabel: ['', 'Poor', 'Fair', 'Good', 'Very Good', 'Excellent'][formData.rating],
-      feedback: formData.feedback || 'No feedback provided',
-      date: new Date().toLocaleString('en-GB', {
-        day: '2-digit',
-        month: 'short',
-        year: 'numeric',
-        hour: '2-digit',
-        minute: '2-digit'
-      })
-    };
+    try {
+      // 1. Google Sheets mein save karo
+      await fetch(GOOGLE_SHEETS_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: formData.name || 'Anonymous',
+          email: formData.email || 'No email provided',
+          rating: formData.rating,
+          ratingLabel: ['', 'Poor', 'Fair', 'Good', 'Very Good', 'Excellent'][formData.rating],
+          feedback: formData.feedback || 'No feedback provided'
+        })
+      });
 
-    const updatedFeedbacks = [newFeedback, ...feedbacks];
-    setFeedbacks(updatedFeedbacks);
-    localStorage.setItem('feedbacks', JSON.stringify(updatedFeedbacks));
+      // 2. FormSubmit se email bhejo (Tarun ko)
+      await fetch('https://formsubmit.co/ajax/tarundandekar128@gmail.com', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: formData.name || 'Anonymous',
+          email: formData.email || 'No email provided',
+          rating: ['', 'Poor', 'Fair', 'Good', 'Very Good', 'Excellent'][formData.rating],
+          feedback: formData.feedback || 'No feedback provided'
+        })
+      });
 
-    setIsSubmitted(true);
-    setTimeout(() => setIsSubmitted(false), 3000);
+      setIsSubmitted(true);
+      setTimeout(() => setIsSubmitted(false), 3000);
 
-    setFormData({ name: '', email: '', feedback: '', rating: 0 });
-    setHoverRating(0);
+      setFormData({ name: '', email: '', feedback: '', rating: 0 });
+      setHoverRating(0);
+
+      // Reload feedbacks
+      await fetchFeedback();
+
+    } catch (err) {
+      alert('Failed to submit feedback. Please try again.');
+      console.error(err);
+    }
   };
 
   const deleteFeedback = (id) => {
     if (window.confirm('Are you sure you want to delete this feedback?')) {
-      const updated = feedbacks.filter(fb => fb.id !== id);
+      const updated = feedbacks.filter((_, index) => index !== id);
       setFeedbacks(updated);
-      localStorage.setItem('feedbacks', JSON.stringify(updated));
     }
   };
 
@@ -116,7 +143,7 @@ const Feedback = () => {
         {isSubmitted && (
           <div className="feedback-success glass-card" data-animate data-delay="50">
             <span>✅</span>
-            <p>Thank you for your feedback!</p>
+            <p>Thank you for your feedback! Your feedback has been saved.</p>
           </div>
         )}
 
@@ -125,18 +152,7 @@ const Feedback = () => {
             Your feedback helps me improve. Share your thoughts about my work, projects, or anything else!
           </p>
 
-          <form 
-            action="https://formsubmit.co/tarundandekar128@gmail.com" 
-            method="POST" 
-            className="feedback-form"
-            onSubmit={handleSubmit}
-          >
-            <input type="hidden" name="_captcha" value="false" />
-            <input type="hidden" name="_next" value={window.location.origin} />
-            <input type="hidden" name="_subject" value="New Feedback from Portfolio!" />
-            <input type="hidden" name="_template" value="table" />
-            <input type="hidden" name="rating" value={formData.rating} />
-
+          <form className="feedback-form" onSubmit={handleSubmit}>
             <div className="form-group">
               <label htmlFor="name">Your Name</label>
               <input
@@ -208,36 +224,40 @@ const Feedback = () => {
           </form>
         </div>
 
-        {/* Feedback List - Sirf Owner Delete Kar Sakta Hai */}
+        {/* Feedback List */}
         <div className="feedback-list-section" data-animate data-delay="200">
           <div className="feedback-list-header">
             <h3 className="feedback-list-title">📋 Previous Feedback</h3>
             <span className="feedback-count">{feedbacks.length} entries</span>
           </div>
 
-          {feedbacks.length === 0 ? (
+          {isLoading ? (
+            <div className="feedback-empty glass-card">
+              <p>Loading feedback...</p>
+            </div>
+          ) : feedbacks.length === 0 ? (
             <div className="feedback-empty glass-card">
               <p>No feedback yet. Be the first to share your thoughts! 🎉</p>
             </div>
           ) : (
             <div className="feedback-list">
-              {feedbacks.map((fb) => (
-                <div key={fb.id} className="feedback-item glass-card">
+              {feedbacks.map((fb, index) => (
+                <div key={index} className="feedback-item glass-card">
                   <div className="feedback-item-header">
                     <div className="feedback-item-user">
-                      <span className="feedback-item-name">{fb.name}</span>
-                      <span className="feedback-item-date">{fb.date}</span>
+                      <span className="feedback-item-name">{fb.Name || fb.name || 'Anonymous'}</span>
+                      <span className="feedback-item-date">{fb.Date || fb.date || 'Recent'}</span>
                     </div>
                     <div className="feedback-item-right">
                       <div className="feedback-item-rating">
-                        <span className="stars">{renderStars(fb.rating)}</span>
-                        <span className="rating-text">{fb.ratingLabel}</span>
+                        <span className="stars">{renderStars(parseInt(fb.Rating || fb.rating) || 0)}</span>
+                        <span className="rating-text">{fb.RatingLabel || fb.ratingLabel}</span>
                       </div>
-                      {/* Sirf Owner (Admin) Delete Kar Sakta Hai */}
-                      {isAdmin && (
+                      {/* Sirf Tarun (Admin) Delete Kar Sakta Hai */}
+                      {isAdmin(formData.email) && (
                         <button 
                           className="feedback-delete-btn"
-                          onClick={() => deleteFeedback(fb.id)}
+                          onClick={() => deleteFeedback(index)}
                           title="Delete feedback"
                         >
                           ✕
@@ -245,7 +265,7 @@ const Feedback = () => {
                       )}
                     </div>
                   </div>
-                  <p className="feedback-item-text">{fb.feedback}</p>
+                  <p className="feedback-item-text">{fb.Feedback || fb.feedback}</p>
                 </div>
               ))}
             </div>
@@ -256,4 +276,4 @@ const Feedback = () => {
   );
 };
 
-export default Feedback;
+export default Feedback;s
