@@ -1,5 +1,5 @@
 {
-  "name": "tarun-portfolio",
+  "name": "tarun-dandekar-portfolio",
   "rewrites": [
     { "source": "/(.*)", "destination": "/index.html" }
   ]
