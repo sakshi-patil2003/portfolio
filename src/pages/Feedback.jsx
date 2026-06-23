@@ -12,12 +12,10 @@ const Feedback = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
-  // ✅ GOOGLE SHEETS URL - YAHAN DAALO
   const GOOGLE_SHEETS_URL = 'https://script.google.com/macros/s/AKfycbx71FWqwoutGf4rZGlTqHZv3xAj4xtbU-4z9AOahFR130ydGFpDrIhmjPULUgIGj6qwkg/exec';
-  // Admin check - Sirf Tarun delete kar sakta hai
-  const isAdmin = (email) => {
-    return email === 'tarundandekar128@gmail.com';
-  };
+
+  // ✅ Admin - Tarun (Hardcoded true)
+  const isAdmin = true; // Tarun sabhi feedback delete kar sakta hai
 
   useEffect(() => {
     const elements = document.querySelectorAll('[data-animate]');
@@ -54,7 +52,6 @@ const Feedback = () => {
       setFeedbacks(data);
     } catch (err) {
       console.error('Error fetching feedback:', err);
-      alert('Failed to load feedback. Please refresh the page.');
     } finally {
       setIsLoading(false);
     }
@@ -82,12 +79,10 @@ const Feedback = () => {
     }
 
     try {
-      console.log('Submitting feedback...');
-      
       // 1. Google Sheets mein save karo
-      const response = await fetch(GOOGLE_SHEETS_URL, {
+      await fetch(GOOGLE_SHEETS_URL, {
         method: 'POST',
-        mode: 'no-cors', // CORS issue ko bypass
+        mode: 'no-cors',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           name: formData.name || 'Anonymous',
@@ -97,8 +92,6 @@ const Feedback = () => {
           feedback: formData.feedback || 'No feedback provided'
         })
       });
-
-      console.log('Google Sheets response:', response);
 
       // 2. FormSubmit se email bhejo (Tarun ko)
       try {
@@ -114,7 +107,6 @@ const Feedback = () => {
         });
       } catch (emailErr) {
         console.error('Email send failed:', emailErr);
-        // Email fail hone par bhi feedback save ho jayega
       }
 
       setIsSubmitted(true);
@@ -128,13 +120,27 @@ const Feedback = () => {
 
     } catch (err) {
       console.error('Submit error:', err);
-      alert(`Failed to submit feedback: ${err.message}`);
+      alert('Failed to submit feedback. Please try again.');
     }
   };
 
-  const deleteFeedback = (id) => {
-    if (window.confirm('Are you sure you want to delete this feedback?')) {
-      const updated = feedbacks.filter((_, index) => index !== id);
+  // ✅ Delete function - Sirf user apna feedback delete kar sakta hai
+  const deleteFeedback = (index, feedbackEmail) => {
+    // Check karo ki user apna feedback delete kar raha hai ya nahi
+    if (formData.email && formData.email === feedbackEmail) {
+      if (window.confirm('Are you sure you want to delete your feedback?')) {
+        const updated = feedbacks.filter((_, i) => i !== index);
+        setFeedbacks(updated);
+      }
+    } else {
+      alert('You can only delete your own feedback!');
+    }
+  };
+
+  // ✅ Tarun sabhi feedback delete kar sakta hai (Admin)
+  const adminDeleteFeedback = (index) => {
+    if (window.confirm('Are you sure you want to delete this feedback (Admin)?')) {
+      const updated = feedbacks.filter((_, i) => i !== index);
       setFeedbacks(updated);
     }
   };
@@ -234,7 +240,7 @@ const Feedback = () => {
           </form>
         </div>
 
-        {/* Feedback List */}
+        {/* Feedback List - User Sirf Apna Feedback Delete Kar Sakta Hai */}
         <div className="feedback-list-section" data-animate data-delay="200">
           <div className="feedback-list-header">
             <h3 className="feedback-list-title">📋 Previous Feedback</h3>
@@ -251,32 +257,45 @@ const Feedback = () => {
             </div>
           ) : (
             <div className="feedback-list">
-              {feedbacks.map((fb, index) => (
-                <div key={index} className="feedback-item glass-card">
-                  <div className="feedback-item-header">
-                    <div className="feedback-item-user">
-                      <span className="feedback-item-name">{fb.Name || fb.name || 'Anonymous'}</span>
-                      <span className="feedback-item-date">{fb.Date || fb.date || 'Recent'}</span>
-                    </div>
-                    <div className="feedback-item-right">
-                      <div className="feedback-item-rating">
-                        <span className="stars">{renderStars(parseInt(fb.Rating || fb.rating) || 0)}</span>
-                        <span className="rating-text">{fb.RatingLabel || fb.ratingLabel}</span>
+              {feedbacks.map((fb, index) => {
+                const fbEmail = fb.Email || fb.email || '';
+                const isOwner = formData.email && formData.email === fbEmail;
+                const isTarunAdmin = formData.email === 'tarundandekar128@gmail.com';
+
+                return (
+                  <div key={index} className="feedback-item glass-card">
+                    <div className="feedback-item-header">
+                      <div className="feedback-item-user">
+                        <span className="feedback-item-name">{fb.Name || fb.name || 'Anonymous'}</span>
+                        <span className="feedback-item-date">{fb.Date || fb.date || 'Recent'}</span>
                       </div>
-                      {isAdmin(formData.email) && (
-                        <button 
-                          className="feedback-delete-btn"
-                          onClick={() => deleteFeedback(index)}
-                          title="Delete feedback"
-                        >
-                          ✕
-                        </button>
-                      )}
+                      <div className="feedback-item-right">
+                        <div className="feedback-item-rating">
+                          <span className="stars">{renderStars(parseInt(fb.Rating || fb.rating) || 0)}</span>
+                          <span className="rating-text">{fb.RatingLabel || fb.ratingLabel}</span>
+                        </div>
+                        {/* Sirf Owner ya Admin delete kar sakta hai */}
+                        {(isOwner || isTarunAdmin) && (
+                          <button 
+                            className="feedback-delete-btn"
+                            onClick={() => {
+                              if (isTarunAdmin) {
+                                adminDeleteFeedback(index);
+                              } else {
+                                deleteFeedback(index, fbEmail);
+                              }
+                            }}
+                            title={isTarunAdmin ? 'Delete as Admin' : 'Delete my feedback'}
+                          >
+                            ✕
+                          </button>
+                        )}
+                      </div>
                     </div>
+                    <p className="feedback-item-text">{fb.Feedback || fb.feedback}</p>
                   </div>
-                  <p className="feedback-item-text">{fb.Feedback || fb.feedback}</p>
-                </div>
-              ))}
+                );
+              })}
             </div>
           )}
         </div>
